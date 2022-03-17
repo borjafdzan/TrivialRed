@@ -4,6 +4,7 @@ using System;
 using UnityEngine.Networking;
 using UnityEngine;
 
+/*
 [Serializable]
 public class Peticion {
     public int response_code;
@@ -19,18 +20,17 @@ public class Pregunta{
     public string correct_answer;
     public string[] incorrect_answers;
 }
+*/
 
 
 
 public class PeticionRed : MonoBehaviour
 {
-     void Start()
+    ControladorUI controladorInterfaz;
+     public void RequestDatos(ControladorUI controlador)
     {
-        // A correct website page.
+        this.controladorInterfaz = controlador;
         StartCoroutine(GetRequest("https://opentdb.com/api.php?amount=10&category=15"));
-
-        // A non-existing page.
-        //StartCoroutine(GetRequest("https://error.html"));
     }
 
     IEnumerator GetRequest(string uri)
@@ -53,10 +53,12 @@ public class PeticionRed : MonoBehaviour
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    //Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     Peticion prediccion =  JsonUtility.FromJson<Peticion>(webRequest.downloadHandler.text);
-                    Debug.Log("codigo respuesta " + prediccion.response_code);
-                    Debug.Log("Longitud lista preguntas " + prediccion.results.Length);
+                    //Debug.Log("codigo respuesta " + prediccion.response_code);
+                    //Debug.Log("Longitud lista preguntas " + prediccion.results.Length);
+                    controladorInterfaz.peticion = prediccion;
+                    controladorInterfaz.CargarInicioPartida();
                     break;
             }
         }
