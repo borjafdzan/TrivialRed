@@ -124,24 +124,6 @@ public class ControladorUI : MonoBehaviour
             }
         }
     }
-    /*
-    public void OnRespuestaCambiar(Toggle respuesta)
-    {
-        if (respuesta.isOn)
-        {
-            Text texto = respuesta.GetComponentInChildren<Text>();
-            this.conjuntoRespuestas[indiceActual] = texto.text;
-        }
-    }
-    public void OnRespuetasCambiarBoolean(Toggle toggleRespueta){
-        if (toggleRespueta.isOn){
-            Text texto = toggleRespueta.GetComponent<Text>();
-            this.conjuntoRespuestas[indiceActual] = texto.text;
-        } else {
-            //this.conjuntoRespuestas[indiceActual] = "Noconstada"
-        }
-    }
-    */
 
     public void CargarPreguntasInterfaz()
     {
