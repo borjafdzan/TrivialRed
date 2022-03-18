@@ -109,7 +109,7 @@ public class ControladorUI : MonoBehaviour
             }
             else
             {
-                this.conjuntoRespuestas[indiceActual] = "False";
+                this.conjuntoRespuestas[indiceActual] = togglePreguntaUnica.GetComponentInChildren<Text>().text=="True"?"False":"True";
             }
         }
         else
